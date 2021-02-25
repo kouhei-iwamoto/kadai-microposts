@@ -10,7 +10,7 @@
             {{-- タブ --}}
             @include('users.navtabs')
             {{-- お気に入り投稿一覧 --}}
-            <h1>ここにお気に入りが表示される</h1>
+            @include('users.favoriteposts')
         </div>
     </div>
 @endsection

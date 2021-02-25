@@ -143,4 +143,12 @@ class User extends Authenticatable
             return false;
         }
     }
+    
+    //指定された$userIdのユーザーをこの投稿をお気に入り中であるか調べる。
+    
+    public function is_favorites($userId)
+    {
+        // フォロー中ユーザの中に $userIdのものが存在するか
+        return $this->favorite()->where('micropost_id', $userId)->exists();
+    }
 }
