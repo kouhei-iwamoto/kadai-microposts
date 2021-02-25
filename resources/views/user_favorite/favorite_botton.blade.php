@@ -6,7 +6,7 @@
         {!! Form::close() !!}
     @else
         {{-- フォローボタンのフォーム --}}
-        {!! Form::open(['route' => [favorites.favorite', $micropost->id]]) !!}
+        {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
             {!! Form::submit('Favorite', ['class' => "btn btn-primary btn-block"]) !!}
         {!! Form::close() !!}
     @endif

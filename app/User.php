@@ -115,16 +115,16 @@ class User extends Authenticatable
     }
     
     //$micropostでidで指定された投稿をお気に入りする。
-    public function favorite($micropostid)
+    public function favorite($micropostId)
     {   
         // すでにお気に入りしているかの確認
-        $exist = $this->is_favorites($micropostid);
+        $exist = $this->is_favorites($micropostId);
        
         
         if($exist) {
             return false;
         } else {
-            $this->favorites()->attach($micropostid);
+            $this->favorites()->attach($micropostId);
             return true;
         }
     }
@@ -144,11 +144,10 @@ class User extends Authenticatable
         }
     }
     
-    //指定された$userIdのユーザーをこの投稿をお気に入り中であるか調べる。
+    //指定された$micropostIdの投稿ををこのユーザーがお気に入り中であるか調べる。
     
-    public function is_favorites($userId)
+    public function is_favorites($micropostId)
     {
-        // フォロー中ユーザの中に $userIdのものが存在するか
-        return $this->favorite()->where('micropost_id', $userId)->exists();
+        return $this->favorites()->where('micropost_id', $micropostId)->exists();
     }
 }
